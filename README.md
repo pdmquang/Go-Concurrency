@@ -52,8 +52,44 @@ greetings
 ```
 ### Measure the amount of memory allocated before and after goroutine creation
 Page 44-46
-### Wait Group
-Page 47-48
+### When to use Wait Group vs Channel
+![alt text](image.png)
+- Primative (Wait Group) Page 47-48
+   - Use for synchronization, allow 1 goroutine to wait for group of other goroutine to complete tasks.
+- Channel (Page 64-78)
+   - for communication btw goroutine, allow goroutine send and receive data, acts as Pipeline
+   - What is ```Pipeline``` (Page 100-113)
+- When to use Wait Group or Channel?
+   - Wait Group 
+      - Parameters: 
+         - Add(no. workers)
+            - ```Add(3)``` = 3 Workers  
+         - Done()
+            - is called same as No. Workers
+            - ```Done()``` called 3 times
+         - Wait() 
+            - This will be called after ```Done()``` is called 3 times
+      - Without data transfer, no communication among goroutines
+      - Example:
+      ![alt text](image-3.png) 
+   - Channel:
+      - Parameter: ```select``` statement
+      - Produce data that shared among goroutines (aka Transfer ownership)
+      - Cleaner code with ```select``` statement when coordinate diff. goroutines
+      - Example:
+         - Simple 
+      ![alt text](image-4.png)
+         - For loop (Required ```Wait Group```)
+         ![alt text](image-6.png)
+   - Errors & Warnings: 
+      - ```panic: sync: negative WaitGroup counter```
+      ![alt text](image-5.png) 
+      - Warning: Pass by value
+      ![alt text](image-1.png)
+      - No more Warning
+      ![alt text](image-2.png)  
+   
+   
 ### Mutex and RWMutex
 Page 49-52
 ### Cond
@@ -62,8 +98,6 @@ Page 52-57
 Page 58-59
 ### Pool
 Page 59-64
-### Channels
-Page 64-78
 ### Select statement
 Page 78-82
 ## Chapter 4
@@ -77,8 +111,6 @@ Page 90-94
 Page 94-96
 ### Error handling
 Page 97-100
-### Pipeline & Generators
-Page 100-113
 ### Fan in, Fan out
 Page 114-119
 ### Or-done-channel
