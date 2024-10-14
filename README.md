@@ -53,7 +53,7 @@ greetings
 ### Measure the amount of memory allocated before and after goroutine creation
 Page 44-46
 ### When to use Wait Group vs Channel
-![alt text](image.png)
+![alt text](images/image.png)
 - Primative (Wait Group) Page 47-48
    - Use for synchronization, allow 1 goroutine to wait for group of other goroutine to complete tasks.
 - Channel (Page 64-78)
@@ -71,23 +71,23 @@ Page 44-46
             - This will be called after ```Done()``` is called 3 times
       - Without data transfer, no communication among goroutines
       - Example:
-      ![alt text](image-3.png) 
+      ![alt text](images/image-3.png) 
    - Channel:
       - Parameter: ```select``` statement
       - Produce data that shared among goroutines (aka Transfer ownership)
       - Cleaner code with ```select``` statement when coordinate diff. goroutines
       - Example:
          - Simple 
-      ![alt text](image-4.png)
+      ![alt text](images/image-4.png)
          - For loop (Required ```Wait Group```)
-         ![alt text](image-6.png)
+         ![alt text](images/image-6.png)
    - Errors & Warnings: 
       - ```panic: sync: negative WaitGroup counter```
-      ![alt text](image-5.png) 
+      ![alt text](images/image-5.png) 
       - Warning: Pass by value
-      ![alt text](image-1.png)
+      ![alt text](images/image-1.png)
       - No more Warning
-      ![alt text](image-2.png)  
+      ![alt text](images/image-2.png)  
    
    
 ### Mutex and RWMutex
